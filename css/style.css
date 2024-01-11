@@ -6,6 +6,15 @@
 }
 
 /* GENERAL */
+img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.avatar-box {
+    width: 40px;
+    border-radius: 50%;
+}
 
 body {
     background-color: #DBDBD4;
@@ -34,6 +43,10 @@ body {
     background-color: #8EDAFC;
 }
 
+#bell {
+    color: #8EDAFC;
+}
+
 /* UTILITY */
 
 .m-text {
@@ -42,4 +55,8 @@ body {
 
 .s-text {
     font-size: 12px;
+}
+
+i {
+    color: #b4b4b4;
 }
