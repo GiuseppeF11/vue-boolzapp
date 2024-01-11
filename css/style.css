@@ -6,3 +6,40 @@
 }
 
 /* GENERAL */
+
+body {
+    background-color: #DBDBD4;
+}
+
+.body-header {
+    height: 15vh;
+    background-color: #009688;
+    padding-top: 5vh;
+}
+
+.container {
+    width: 70vw;
+    height: 90vh;
+    background-color: #EAEAEA;
+}
+
+.row-header {
+    height: 8%;
+    background-color: #EAEAEA;
+    border: 1px solid black;
+}
+
+.row-bell {
+    min-height: 9%;
+    background-color: #8EDAFC;
+}
+
+/* UTILITY */
+
+.m-text {
+    font-size: 13px;
+}
+
+.s-text {
+    font-size: 12px;
+}
