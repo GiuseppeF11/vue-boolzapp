@@ -24,8 +24,8 @@
         <div class="body-header">
                 <div id="app">
                         <div class="container">
-                                <div class="row h-100 ">
-                                        <aside class="col-4  border border-secondary">
+                                <div class="row h-100">
+                                        <aside class="col-4 p-0 border border-secondary h-100">
                                                 <header class="row row-header align-items-center ">
                                                         <div class="col-auto">
                                                                 <div class="border avatar-box">
@@ -56,7 +56,7 @@
                                                                 <a href="" class="s-text text-secondary ">Attiva notifiche desktop</a>
                                                         </div>
                                                 </div>
-                                                <div class="row">
+                                                <div class="row row-search">
                                                         <nav class="navbar bg-body-tertiary">
                                                                 <form class="container-fluid">
                                                                         <div class="input-group">
@@ -68,9 +68,28 @@
                                                                 </form>
                                                         </nav>
                                                 </div>
-
+                                                <div class="contacts">
+                                                        <div id="contact" class="row align-items-center py-3" v-for="contact in contacts">
+                                                                <div class="col-auto">
+                                                                        <div class="border avatar-box">
+                                                                                <img :src="contact.avatar" alt="">
+                                                                        </div>
+                                                                </div>
+                                                                <div class="col">
+                                                                        <div class="">
+                                                                                {{contact.name}}
+                                                                        </div>
+                                                                        <div class="s-text text-secondary ">
+                                                                                Ultimo messaggio
+                                                                        </div>
+                                                                </div>
+                                                                <div class="col-auto">
+                                                                        <div class="s-text text-secondary ">12:00</div>
+                                                                </div>
+                                                        </div>
+                                                </div>
                                         </aside>
-                                        <main class="col border border-secondary ">
+                                        <main class="col p-0 border border-secondary">
                                                 <header class="row row-header align-items-center ">
                                                         <div class="col-auto">
                                                                 <div class="border avatar-box">
@@ -81,17 +100,90 @@
                                                                 <div>
                                                                         {{contacts[0].name}}
                                                                 </div>
+                                                                <div class="s-text text-secondary ">
+                                                                        Ultimo accesso: {{contacts[0].messages[2].date}}
+                                                                </div>
                                                         </div>
                                                         <div class="col-auto">
                                                                 <i class="fa-solid fa-magnifying-glass "></i>
                                                         </div>
                                                         <div class="col-auto">
-                                                                <i class="fa-solid fa-message"></i>
+                                                                <i class="fa-solid fa-paperclip"></i>
                                                         </div>
                                                         <div class="col-auto">
                                                                 <i class="fa-solid fa-ellipsis-vertical"></i>
                                                         </div>
                                                 </header>
+                                                <div class="chat-box">
+                                                        <div class="row row-chat g-0 px-5 py-2 justify-content-end">
+                                                                <div class="col-auto message l-text px-2 sent ">
+                                                                        {{contacts[0].messages[0].message}}
+                                                                </div>
+                                                        </div>
+                                                        <div class="row row-chat g-0 px-5 py-2 justify-content-start">
+                                                                <div class="col-auto message l-text px-2 received ">
+                                                                        {{contacts[0].messages[0].message}}
+                                                                </div>
+                                                        </div>
+                                                        <div class="row row-chat g-0 px-5 py-2 justify-content-end">
+                                                                <div class="col-auto message l-text px-2 sent ">
+                                                                        {{contacts[0].messages[0].message}}
+                                                                </div>
+                                                        </div>
+                                                        <div class="row row-chat g-0 px-5 py-2 justify-content-start">
+                                                                <div class="col-auto message l-text px-2 received">
+                                                                        {{contacts[0].messages[0].message}}
+                                                                </div>
+                                                        </div>
+                                                        <div class="row row-chat g-0 px-5 py-2 justify-content-start">
+                                                                <div class="col-auto message l-text px-2 received">
+                                                                        {{contacts[0].messages[0].message}}
+                                                                </div>
+                                                        </div>
+                                                        <div class="row row-chat g-0 px-5 py-2 justify-content-end">
+                                                                <div class="col-auto message l-text px-2 sent ">
+                                                                        {{contacts[0].messages[0].message}}
+                                                                </div>
+                                                        </div>
+                                                        <div class="row row-chat g-0 px-5 py-2 justify-content-end">
+                                                                <div class="col-auto message l-text px-2 sent ">
+                                                                        {{contacts[0].messages[0].message}}
+                                                                </div>
+                                                        </div>
+                                                        <div class="row row-chat g-0 px-5 py-2 justify-content-end">
+                                                                <div class="col-auto message l-text px-2 sent ">
+                                                                        {{contacts[0].messages[0].message}}
+                                                                </div>
+                                                        </div>
+                                                        <div class="row row-chat g-0 px-5 py-2 justify-content-end">
+                                                                <div class="col-auto message l-text px-2 sent ">
+                                                                        {{contacts[0].messages[0].message}}
+                                                                </div>
+                                                        </div>
+                                                        <div class="row row-chat g-0 px-5 py-2 justify-content-end">
+                                                                <div class="col-auto message l-text px-2 sent ">
+                                                                        {{contacts[0].messages[0].message}}
+                                                                </div>
+                                                        </div>
+                                                        <div class="row row-chat g-0 px-5 py-2 justify-content-end">
+                                                                <div class="col-auto message l-text px-2 sent ">
+                                                                        {{contacts[0].messages[0].message}}
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                                <footer class="row row-footer align-items-center  ">
+                                                        <div class="col-auto">
+                                                                <i class="fa-regular fa-face-smile fs-2 "></i>
+                                                        </div>
+                                                        <div class="col">
+                                                                <div class="input-group input-group-sm">
+                                                                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                                                </div>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                                <i class="fa-solid fa-microphone fs-2"></i>
+                                                        </div>
+                                                </footer>
                                         </main>
                                 </div>
                         </div>
