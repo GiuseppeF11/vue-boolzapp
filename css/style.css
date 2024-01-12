@@ -81,6 +81,7 @@ main {
 
 .message {
     padding: 5px;
+    min-width: 40%;
     max-width: 70%;
     border-radius: 5px;
 }
@@ -107,6 +108,10 @@ main {
 i {
     padding: 5px;
     color: #b4b4b4;
+}
+
+.active {
+    background-color: #c5c5c5;
 }
 
 .sent {

@@ -5,6 +5,7 @@ const {createApp} = Vue;
 createApp ({
     data() {
         return {
+            activeContact: 0,
             contacts: [
                 {
                     name: 'Michele',
@@ -170,6 +171,8 @@ createApp ({
             ]
             
         };
-    }
+    },
+
+
     // Monto l'istanza di Vue in pagina
 }).mount('#app');
