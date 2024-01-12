@@ -69,7 +69,7 @@
                                                         </nav>
                                                 </div>
                                                 <div class="contacts">
-                                                        <div id="contact" class="row align-items-center py-3" v-for="contact in contacts">
+                                                        <div id="contact" class="row align-items-center py-3 text" v-for="contact in contacts">
                                                                 <div class="col-auto">
                                                                         <div class="border avatar-box">
                                                                                 <img :src="contact.avatar" alt="">
@@ -80,11 +80,13 @@
                                                                                 <strong>{{contact.name}}</strong>
                                                                         </div>
                                                                         <div class="s-text text-secondary ">
-                                                                                Ultimo messaggio
+                                                                                {{contacts[0].messages[2].message}}
                                                                         </div>
                                                                 </div>
                                                                 <div class="col-auto">
-                                                                        <div class="s-text text-secondary ">12:00</div>
+                                                                        <div class="s-text text-secondary ">
+                                                                                {{contacts[0].messages[2].date.split(" ",2)[1]}}
+                                                                        </div>
                                                                 </div>
                                                         </div>
                                                 </div>
@@ -118,56 +120,25 @@
                                                         <div class="row row-chat g-0 px-5 py-2 justify-content-end">
                                                                 <div class="col-auto message l-text px-2 sent ">
                                                                         {{contacts[0].messages[0].message}}
-                                                                </div>
-                                                        </div>
-                                                        <div class="row row-chat g-0 px-5 py-2 justify-content-start">
-                                                                <div class="col-auto message l-text px-2 received ">
-                                                                        {{contacts[0].messages[0].message}}
+                                                                        <div class="d-flex justify-content-end s-text text-secondary">
+                                                                                {{contacts[0].messages[0].date.split(" ",2)[1]}}
+                                                                        </div>
                                                                 </div>
                                                         </div>
                                                         <div class="row row-chat g-0 px-5 py-2 justify-content-end">
                                                                 <div class="col-auto message l-text px-2 sent ">
-                                                                        {{contacts[0].messages[0].message}}
-                                                                </div>
-                                                        </div>
-                                                        <div class="row row-chat g-0 px-5 py-2 justify-content-start">
-                                                                <div class="col-auto message l-text px-2 received">
-                                                                        {{contacts[0].messages[0].message}}
+                                                                        {{contacts[0].messages[1].message}}
+                                                                        <div class="d-flex justify-content-end s-text text-secondary">
+                                                                                {{contacts[0].messages[1].date.split(" ",2)[1]}}
+                                                                        </div>
                                                                 </div>
                                                         </div>
                                                         <div class="row row-chat g-0 px-5 py-2 justify-content-start">
                                                                 <div class="col-auto message l-text px-2 received">
-                                                                        {{contacts[0].messages[0].message}}
-                                                                </div>
-                                                        </div>
-                                                        <div class="row row-chat g-0 px-5 py-2 justify-content-end">
-                                                                <div class="col-auto message l-text px-2 sent ">
-                                                                        {{contacts[0].messages[0].message}}
-                                                                </div>
-                                                        </div>
-                                                        <div class="row row-chat g-0 px-5 py-2 justify-content-end">
-                                                                <div class="col-auto message l-text px-2 sent ">
-                                                                        {{contacts[0].messages[0].message}}
-                                                                </div>
-                                                        </div>
-                                                        <div class="row row-chat g-0 px-5 py-2 justify-content-end">
-                                                                <div class="col-auto message l-text px-2 sent ">
-                                                                        {{contacts[0].messages[0].message}}
-                                                                </div>
-                                                        </div>
-                                                        <div class="row row-chat g-0 px-5 py-2 justify-content-end">
-                                                                <div class="col-auto message l-text px-2 sent ">
-                                                                        {{contacts[0].messages[0].message}}
-                                                                </div>
-                                                        </div>
-                                                        <div class="row row-chat g-0 px-5 py-2 justify-content-end">
-                                                                <div class="col-auto message l-text px-2 sent ">
-                                                                        {{contacts[0].messages[0].message}}
-                                                                </div>
-                                                        </div>
-                                                        <div class="row row-chat g-0 px-5 py-2 justify-content-end">
-                                                                <div class="col-auto message l-text px-2 sent ">
-                                                                        {{contacts[0].messages[0].message}}
+                                                                        {{contacts[0].messages[2].message}}
+                                                                        <div class="d-flex justify-content-end s-text text-secondary">
+                                                                                {{contacts[0].messages[2].date.split(" ",2)[1]}} 
+                                                                        </div>
                                                                 </div>
                                                         </div>
                                                 </div>
