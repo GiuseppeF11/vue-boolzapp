@@ -5,6 +5,7 @@ const {createApp} = Vue;
 createApp ({
     data() {
         return {
+            newMessage: '',
             activeContact: 0,
             contacts: [
                 {
@@ -174,8 +175,26 @@ createApp ({
     },
     methods: {
         sendMessage() {
-            
-        }
+            if (this.newMessage.trim().length > 0) { 
+                let obj = {};
+                obj.date = '15:30:55';
+                obj.message = this.newMessage.trim(); //metto nell'oggetto la chiave text uguale a newMessage
+                obj.status = 'sent';
+                this.contacts[this.activeContact].messages.push(obj); //pusho l'oggetto completo di text e done dentro la mia lista di cose da fare (todos)
+                this.newMessage = ''; // Per svuotare il v-model ovvero il value dell'input
+
+                let timeout;
+
+                timeout = setTimeout(() => {
+                    let autoMessage = {
+                        date: '15:30:55',
+                        message:'Ok!',
+                        status:'received'
+                    };
+                    this.contacts[this.activeContact].messages.push(autoMessage);
+                }, 1000);
+            }
+        },
     }
 
     // Monto l'istanza di Vue in pagina
