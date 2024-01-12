@@ -172,7 +172,11 @@ createApp ({
             
         };
     },
-
+    methods: {
+        sendMessage() {
+            
+        }
+    }
 
     // Monto l'istanza di Vue in pagina
 }).mount('#app');

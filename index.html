@@ -73,7 +73,8 @@
                                                                 id="contact" 
                                                                 class="row align-items-center py-3" 
                                                                 v-for="(contact, i) in contacts" 
-                                                                :class="(i==activeContact) ? 'active' : ''">
+                                                                :class="(i==activeContact) ? 'active' : ''"
+                                                                @click="activeContact = i">
                                                                         <div class="col-auto">
                                                                                 <div class="border avatar-box">
                                                                                         <img :src="contact.avatar" :alt="contact.name">
@@ -89,7 +90,7 @@
                                                                         </div>
                                                                         <div class="col-auto">
                                                                                 <div class="s-text text-secondary ">
-                                                                                        {{contacts[0].messages[2].date.split(" ",2)[1]}}
+                                                                                        {{contacts[activeContact].messages[2].date.split(" ",2)[1]}} <!-- Deve essere uguale alla data dell'ultimo messaggio ricevuto con classe received -->
                                                                                 </div>
                                                                         </div>
                                                         </div>
@@ -99,15 +100,15 @@
                                                 <header class="row row-header align-items-center ">
                                                         <div class="col-auto">
                                                                 <div class="border avatar-box">
-                                                                        <img :src="contacts[0].avatar" alt="">
+                                                                        <img :src="contacts[activeContact].avatar" alt="">
                                                                 </div>
                                                         </div>
                                                         <div class="col">
                                                                 <div>
-                                                                        <strong>{{contacts[0].name}}</strong>
+                                                                        <strong>{{contacts[activeContact].name}}</strong>
                                                                 </div>
                                                                 <div class="s-text text-secondary ">
-                                                                        Ultimo accesso: {{contacts[0].messages[2].date}}
+                                                                        Ultimo accesso: {{contacts[activeContact].messages[0].date}} <!-- Deve essere uguale alla data dell'ultimo messaggio ricevuto con classe received -->
                                                                 </div>
                                                         </div>
                                                         <div class="col-auto">
@@ -121,27 +122,14 @@
                                                         </div>
                                                 </header>
                                                 <div class="chat-box">
-                                                        <div class="row row-chat g-0 px-5 py-2 justify-content-end">
-                                                                <div class="col-auto message l-text px-2 sent "> <!-- Creare un ciclo del tipo: prendi l'iesimo messaggio del contatto e stampalo -->
-                                                                        {{contacts[0].messages[0].message}}
+                                                        <div 
+                                                                class="row row-chat g-0 px-5 py-2 " 
+                                                                v-for="(elem,i) in contacts[activeContact].messages"
+                                                                :class="contacts[activeContact].messages[i].status == 'sent' ? 'justify-content-end' : 'justify-content-start'">
+                                                                <div class="col-auto message l-text px-2" :class="contacts[activeContact].messages[i].status == 'sent' ? 'sent' : 'received'">
+                                                                        {{contacts[activeContact].messages[i].message}}
                                                                         <div class="d-flex justify-content-end s-text text-secondary">
-                                                                                {{contacts[0].messages[0].date.split(" ",2)[1]}}
-                                                                        </div>
-                                                                </div>
-                                                        </div>
-                                                        <div class="row row-chat g-0 px-5 py-2 justify-content-end">
-                                                                <div class="col-auto message l-text px-2 sent ">
-                                                                        {{contacts[0].messages[1].message}}
-                                                                        <div class="d-flex justify-content-end s-text text-secondary">
-                                                                                {{contacts[0].messages[1].date.split(" ",2)[1]}}
-                                                                        </div>
-                                                                </div>
-                                                        </div>
-                                                        <div class="row row-chat g-0 px-5 py-2 justify-content-start">
-                                                                <div class="col-auto message l-text px-2 received">
-                                                                        {{contacts[0].messages[2].message}}
-                                                                        <div class="d-flex justify-content-end s-text text-secondary">
-                                                                                {{contacts[0].messages[2].date.split(" ",2)[1]}} 
+                                                                                {{contacts[activeContact].messages[i].date.split(" ",2)[1]}}
                                                                         </div>
                                                                 </div>
                                                         </div>
