@@ -6,6 +6,7 @@ createApp ({
     data() {
         return {
             newMessage: '',
+            searchContact: '',
             activeContact: 0,
             contacts: [
                 {
@@ -176,10 +177,12 @@ createApp ({
     methods: {
         sendMessage() {
             if (this.newMessage.trim().length > 0) { 
-                let obj = {};
-                obj.date = '15:30:55';
-                obj.message = this.newMessage.trim(); //metto nell'oggetto la chiave text uguale a newMessage
-                obj.status = 'sent';
+                let obj = {
+                    date :'10/01/2020 16:15:22',
+                    message : this.newMessage.trim(),
+                    status : 'sent',
+                };
+                
                 this.contacts[this.activeContact].messages.push(obj); //pusho l'oggetto completo di text e done dentro la mia lista di cose da fare (todos)
                 this.newMessage = ''; // Per svuotare il v-model ovvero il value dell'input
 
@@ -187,7 +190,7 @@ createApp ({
 
                 timeout = setTimeout(() => {
                     let autoMessage = {
-                        date: '15:30:55',
+                        date: '10/01/2020 16:15:22',
                         message:'Ok!',
                         status:'received'
                     };
@@ -195,6 +198,18 @@ createApp ({
                 }, 1000);
             }
         },
+
+        searchChat() {
+            for (let i = 0; i < this.contacts.length; i++) {
+                const name = this.contacts[i].name.toLowerCase();
+                if (name.includes(this.searchContact)) {
+                    this.contacts[i].visible = true
+                }
+                else {
+                    this.contacts[i].visible = false
+                }
+            }
+        }
     }
 
     // Monto l'istanza di Vue in pagina

@@ -63,18 +63,25 @@
                                                                                 <span class="input-group-text" id="basic-addon1">
                                                                                         <i class="fa-solid fa-magnifying-glass text-secondary "></i>
                                                                                 </span>
-                                                                                <input type="text" class="form-control s-text" placeholder="Cerca o inizia una nuova chat" aria-label="Username" aria-describedby="basic-addon1">
+                                                                                <input 
+                                                                                        type="text" 
+                                                                                        class="form-control s-text" 
+                                                                                        placeholder="Cerca o inizia una nuova chat" 
+                                                                                        aria-label="Username" 
+                                                                                        aria-describedby="basic-addon1"
+                                                                                        v-model="searchContact"
+                                                                                        @keyup="searchChat()">
                                                                         </div>
                                                                 </form>
                                                         </nav>
                                                 </section>
                                                 <section class="contacts">
-                                                        <div 
-                                                                id="contact" 
+                                                        <div v-for="(contact, i) in contacts">
+                                                                <div id="contact" 
                                                                 class="row align-items-center py-3" 
-                                                                v-for="(contact, i) in contacts" 
                                                                 :class="(i==activeContact) ? 'active' : ''"
-                                                                @click="activeContact = i">
+                                                                @click="activeContact = i" 
+                                                                v-if="contact.visible == true">
                                                                         <div class="col-auto">
                                                                                 <div class="border avatar-box">
                                                                                         <img :src="contact.avatar" :alt="contact.name">
@@ -85,14 +92,15 @@
                                                                                         <strong>{{contact.name}}</strong>
                                                                                 </div>
                                                                                 <div class="s-text text-secondary ">
-                                                                                        {{contacts[0].messages[2].message}}
+                                                                                        {{contacts[i].messages[contacts[i].messages.length-1].message}}
                                                                                 </div>
                                                                         </div>
                                                                         <div class="col-auto">
                                                                                 <div class="s-text text-secondary ">
-                                                                                        {{contacts[0].messages[2].date.split(" ",2)[1]}} <!-- Deve essere uguale alla data dell'ultimo messaggio ricevuto con classe received -->
+                                                                                        {{contacts[i].messages[contacts[i].messages.length-1].date.split(" ",2)[1]}} <!-- Deve essere uguale alla data dell'ultimo messaggio ricevuto con classe received -->
                                                                                 </div>
                                                                         </div>
+                                                                </div>
                                                         </div>
                                                 </section>
                                         </aside>
@@ -108,7 +116,7 @@
                                                                         <strong>{{contacts[activeContact].name}}</strong>
                                                                 </div>
                                                                 <div class="s-text text-secondary ">
-                                                                        Ultimo accesso: {{contacts[activeContact].messages[0].date}} <!-- Deve essere uguale alla data dell'ultimo messaggio ricevuto con classe received -->
+                                                                        Ultimo accesso: {{contacts[activeContact].messages[contacts[activeContact].messages.length-1].date}} <!-- Deve essere uguale alla data dell'ultimo messaggio ricevuto con classe received -->
                                                                 </div>
                                                         </div>
                                                         <div class="col-auto">
@@ -144,7 +152,8 @@
                                                                                 type="text" 
                                                                                 class="form-control" 
                                                                                 aria-label="Sizing example input" 
-                                                                                aria-describedby="inputGroup-sizing-sm" 
+                                                                                aria-describedby="inputGroup-sizing-sm"
+                                                                                placeholder="Scrivi un messaggio" 
                                                                                 @keyup.enter="sendMessage()" 
                                                                                 v-model="newMessage">
                                                                 </div>
