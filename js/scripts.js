@@ -5,6 +5,7 @@ const {createApp} = Vue;
 createApp ({
     data() {
         return {
+            hour: 'split(" ",2)[1]',
             newMessage: '',
             searchContact: '',
             activeContact: 0,
@@ -178,7 +179,7 @@ createApp ({
         sendMessage() {
             if (this.newMessage.trim().length > 0) { 
                 let obj = {
-                    date :'10/01/2020 16:15:22',
+                    date :'10/01/2020 20:00:03',
                     message : this.newMessage.trim(),
                     status : 'sent',
                 };
@@ -190,7 +191,7 @@ createApp ({
 
                 timeout = setTimeout(() => {
                     let autoMessage = {
-                        date: '10/01/2020 16:15:22',
+                        date: '10/01/2020 22:18:10',
                         message:'Ok!',
                         status:'received'
                     };
@@ -209,7 +210,10 @@ createApp ({
                     this.contacts[i].visible = false
                 }
             }
-        }
+        },
+
+        //Creare una funzione che splitta l'ora
+
     }
 
     // Monto l'istanza di Vue in pagina

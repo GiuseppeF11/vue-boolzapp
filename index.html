@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>Vue Boolzapp</title>
+        <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/WhatsApp_icon.png/598px-WhatsApp_icon.png" type="image/x-icon">
 
         <!-- BOOTSTRAP -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -135,9 +136,26 @@
                                                                 v-for="(elem,i) in contacts[activeContact].messages"
                                                                 :class="contacts[activeContact].messages[i].status == 'sent' ? 'justify-content-end' : 'justify-content-start'">
                                                                 <div class="col-auto message l-text px-2" :class="contacts[activeContact].messages[i].status == 'sent' ? 'sent' : 'received'">
-                                                                        {{contacts[activeContact].messages[i].message}}
-                                                                        <div class="d-flex justify-content-end s-text text-secondary">
-                                                                                {{contacts[activeContact].messages[i].date}} <!-- .split(" ",2)[1] -->
+                                                                        <div class="row">
+                                                                                <div class="col">
+                                                                                        {{contacts[activeContact].messages[i].message}}
+                                                                                </div>
+                                                                                <div class="col-auto">
+                                                                                        <div class="dropdown">
+                                                                                                <a class="btn message-dropdown dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                                                </a>
+                                                                                        
+                                                                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                                                                        <li><a class="dropdown-item" href="#">Message info</a></li>
+                                                                                                        <li><a class="dropdown-item" href="#">Delete message</a></li>
+                                                                                                </ul>
+                                                                                        </div>
+                                                                                </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                                <div class="d-flex justify-content-end s-text text-secondary">
+                                                                                        {{contacts[activeContact].messages[i].date.split(" ",2)[1]}}
+                                                                                </div>
                                                                         </div>
                                                                 </div>
                                                         </div>
