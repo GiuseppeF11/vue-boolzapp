@@ -83,8 +83,9 @@ main {
 .message {
     padding: 5px;
     min-width: 40%;
-    max-width: 70%;
+    max-width: 60%;
     border-radius: 5px;
+    word-wrap: break-word;
 }
 
 .message-dropdown {
@@ -128,6 +129,9 @@ i {
     background-color: #ffffff;
 }
 
+.form-control {
+    border: 2px solid grey;
+}
 
 /* INTERACTIONS */
 
@@ -145,6 +149,12 @@ i:hover {
     .message-dropdown {
         display: block;
     }
+}
+
+.form-control:focus {
+    border-color: #898989;
+    outline: 0;
+    box-shadow: 0 0 0 0.15rem rgba(101, 101, 101, 0.25);
 }
 
 /* SCROLL-BAR */

@@ -175,11 +175,12 @@ createApp ({
             
         };
     },
+
     methods: {
         sendMessage() {
             if (this.newMessage.trim().length > 0) { 
                 let obj = {
-                    date :'10/01/2020 20:00:03',
+                    date : this.getCurrentDateTime(),
                     message : this.newMessage.trim(),
                     status : 'sent',
                 };
@@ -191,14 +192,20 @@ createApp ({
 
                 timeout = setTimeout(() => {
                     let autoMessage = {
-                        date: '10/01/2020 22:18:10',
+                        date: this.getCurrentDateTime(),
                         message:'Ok!',
                         status:'received'
                     };
                     this.contacts[this.activeContact].messages.push(autoMessage);
-                }, 1000);
+                }, 3000);
             }
         },
+
+        /* removeMessage(i) {
+            console.log(i, this.contacts[i].messages);
+            this.contacts.splice(i, 1);
+            console.log('Hai rimosso il messaggio')
+        }, */
 
         searchChat() {
             for (let i = 0; i < this.contacts.length; i++) {
@@ -212,9 +219,23 @@ createApp ({
             }
         },
 
+        getCurrentDateTime() {
+            const oggi = new Date();
+            const giorno = oggi.getDate().toString().padStart(2, '0');
+            const mese = (oggi.getMonth() + 1).toString().padStart(2, '0');
+            const anno = oggi.getFullYear();
+            const ore = oggi.getHours().toString().padStart(2, '0');
+            const minuti = oggi.getMinutes().toString().padStart(2, '0');
+            const secondi = oggi.getSeconds().toString().padStart(2, '0');
+        
+            const orarioFinale = `${giorno}/${mese}/${anno} ${ore}:${minuti}:${secondi}`;
+
+            return orarioFinale;
+        },
+
         //Creare una funzione che splitta l'ora
 
-    }
+    },
 
     // Monto l'istanza di Vue in pagina
 }).mount('#app');
