@@ -86,11 +86,21 @@ main {
     max-width: 60%;
     border-radius: 5px;
     word-wrap: break-word;
+    box-shadow: 5px 5px 5px rgb(139, 139, 139);
 }
 
 .message-dropdown {
-    padding: 0 5px;
-    display: none;
+    /* display: none */
+    border: none;
+    padding: 0px;
+}
+
+.dropdown-menu {
+    box-shadow: 2px 2px 5px rgb(71, 71, 71);
+}
+
+.dropdown-item:active {
+    background-color: rgb(124, 124, 124);
 }
 
 /* UTILITY */

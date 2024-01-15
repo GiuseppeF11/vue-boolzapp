@@ -9,6 +9,7 @@ createApp ({
             newMessage: '',
             searchContact: '',
             activeContact: 0,
+            activeMessage: 0,
             contacts: [
                 {
                     name: 'Michele',
@@ -215,7 +216,7 @@ createApp ({
                 }
                 else {
                     this.contacts[i].visible = false
-                }
+                }   
             }
         },
 
@@ -231,6 +232,11 @@ createApp ({
             const orarioFinale = `${giorno}/${mese}/${anno} ${ore}:${minuti}:${secondi}`;
 
             return orarioFinale;
+        },
+
+        removeMessage(i) {
+            console.log('Hai eliminato questo messaggio: ' , i);
+            this.contacts[this.activeContact].messages.splice(i , 1);
         },
 
         //Creare una funzione che splitta l'ora

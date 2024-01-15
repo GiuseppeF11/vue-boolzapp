@@ -2,212 +2,213 @@
 <html lang="en">
 
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <title>Vue Boolzapp</title>
-        <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/WhatsApp_icon.png/598px-WhatsApp_icon.png" type="image/x-icon">
-
-        <!-- BOOTSTRAP -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <!-- FONT-AWESOME -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <!-- CSS -->
-        <link rel="stylesheet" href="css/style.css">
-        <!-- VUE JS -->
-        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-        <!-- AXIOS -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.5/axios.min.js" integrity="sha512-TjBzDQIDnc6pWyeM1bhMnDxtWH0QpOXMcVooglXrali/Tj7W569/wd4E8EDjk1CwOAOPSJon1VfcEt1BI4xIrA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<title>Vue Boolzapp</title>
+	<link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/WhatsApp_icon.png/598px-WhatsApp_icon.png" type="image/x-icon">
+	
+	<!-- BOOTSTRAP -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<!-- FONT-AWESOME -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/style.css">
+	<!-- VUE JS -->
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<!-- AXIOS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.5/axios.min.js" integrity="sha512-TjBzDQIDnc6pWyeM1bhMnDxtWH0QpOXMcVooglXrali/Tj7W569/wd4E8EDjk1CwOAOPSJon1VfcEt1BI4xIrA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	
 </head>
 
 <body>
-        <div class="body-header">
-                <div id="app">
-                        <div class="container border rounded-2 shadow">
-                                <div class="row h-100">
-                                        <aside class="col-4 p-0 h-100 border rounded-2">
-                                                <header class="row row-header align-items-center ">
-                                                        <div class="col-auto">
-                                                                <div class="border avatar-box">
-                                                                        <img src="img/avatar_io.jpg" alt="">
-                                                                </div>
-                                                        </div>
-                                                        <div class="col">
-                                                                <div>
-                                                                        <strong>Sofia</strong>
-                                                                </div>
-                                                        </div>
-                                                        <div class="col-auto">
-                                                                <i class="fa-solid fa-circle-notch"></i>
-                                                        </div>
-                                                        <div class="col-auto">
-                                                                <i class="fa-solid fa-message"></i>
-                                                        </div>
-                                                        <div class="col-auto">
-                                                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                                                        </div>
-                                                </header>
-                                                <section class="row row-bell py-2 align-items-center  ">
-                                                        <div class="col-auto ">
-                                                                <i id="bell" class="fa-solid fa-bell-slash bg-body p-2 rounded-5"></i>
-                                                        </div>
-                                                        <div class="col">
-                                                                <div class="m-text">Ricevi notifiche di nuovi messaggi</div>
-                                                                <a href="" class="s-text text-secondary ">Attiva notifiche desktop</a>
-                                                        </div>
-                                                </section>
-                                                <section class="row row-search">
-                                                        <nav class="navbar bg-body-tertiary">
-                                                                <form class="container-fluid">
-                                                                        <div class="input-group">
-                                                                                <span class="input-group-text" id="basic-addon1">
-                                                                                        <i class="fa-solid fa-magnifying-glass text-secondary "></i>
-                                                                                </span>
-                                                                                <input 
-                                                                                        type="text" 
-                                                                                        class="form-control s-text" 
-                                                                                        placeholder="Cerca o inizia una nuova chat" 
-                                                                                        aria-label="Username" 
-                                                                                        aria-describedby="basic-addon1"
-                                                                                        v-model="searchContact"
-                                                                                        @keyup="searchChat()">
-                                                                        </div>
-                                                                </form>
-                                                        </nav>
-                                                </section>
-                                                <section class="contacts">
-                                                        <div v-for="(contact, i) in contacts">
-                                                                <div id="contact" 
-                                                                class="row align-items-center py-3" 
-                                                                :class="(i==activeContact) ? 'active' : ''"
-                                                                @click="activeContact = i" 
-                                                                v-if="contact.visible == true">
-                                                                        <div class="col-auto">
-                                                                                <div class="border avatar-box">
-                                                                                        <img :src="contact.avatar" :alt="contact.name">
-                                                                                </div>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                                <div class="">
-                                                                                        <strong>{{contact.name}}</strong>
-                                                                                </div>
-                                                                                <div class="s-text text-secondary ">
-                                                                                        {{contacts[i].messages[contacts[i].messages.length-1].message}}
-                                                                                </div>
-                                                                        </div>
-                                                                        <div class="col-auto">
-                                                                                <div class="s-text text-secondary ">
-                                                                                        {{contacts[i].messages[contacts[i].messages.length-1].date.split(" ",2)[1]}} <!-- Deve essere uguale alla data dell'ultimo messaggio ricevuto con classe received -->
-                                                                                </div>
-                                                                        </div>
-                                                                </div>
-                                                        </div>
-                                                </section>
-                                        </aside>
-                                        <main class="col p-0 border rounded-2">
-                                                <header class="row row-header align-items-center ">
-                                                        <div class="col-auto">
-                                                                <div class="border avatar-box">
-                                                                        <img :src="contacts[activeContact].avatar" :alt="contacts[activeContact].name">
-                                                                </div>
-                                                        </div>
-                                                        <div class="col">
-                                                                <div>
-                                                                        <strong>{{contacts[activeContact].name}}</strong>
-                                                                </div>
-                                                                <div class="s-text text-secondary ">
-                                                                        Ultimo accesso: {{contacts[activeContact].messages[contacts[activeContact].messages.length-1].date}} <!-- Deve essere uguale alla data dell'ultimo messaggio ricevuto con classe received -->
-                                                                </div>
-                                                        </div>
-                                                        <div class="col-auto">
-                                                                <i class="fa-solid fa-magnifying-glass "></i>
-                                                        </div>
-                                                        <div class="col-auto">
-                                                                <i class="fa-solid fa-paperclip"></i>
-                                                        </div>
-                                                        <div class="col-auto">
-                                                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                                                        </div>
-                                                </header>
-                                                <div class="chat-box">
-                                                        <div 
-                                                                id="message"
-                                                                class="row row-chat g-0 px-5 py-2 " 
-                                                                v-for="(singleMessage,i) in contacts[activeContact].messages"
-                                                                :class="singleMessage.status == 'sent' ? 'justify-content-end' : 'justify-content-start'"
-                                                                :class="{
-                                                                        'justify-content-end':singleMessage.status == 'sent',
-                                                                        'justify-content-start': singleMessage.status == 'received'
-                                                                }">
-                                                                <div 
-                                                                class="col-auto message l-text px-2"
-                                                                :class="{
-                                                                        'sent':singleMessage.status == 'sent',
-                                                                        'received': singleMessage.status == 'received'
-                                                                }">
-                                                                        <div class="row">
-                                                                                <div class="col">
-                                                                                        {{singleMessage.message}}
-                                                                                </div>
-                                                                                <div class="col-2">
-                                                                                        <div class="dropdown">
-                                                                                                <a class="btn message-dropdown dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                                                </a>
-                                                                                        
-                                                                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                                                                        <li>
-                                                                                                                <a class="dropdown-item" href="#" >Message info</a>
-                                                                                                        </li>
-                                                                                                        <li  @click="removeMessage(elem)">
-                                                                                                                <a class="dropdown-item" href="#">Delete message</a>
-                                                                                                        </li>
-                                                                                                </ul>
-                                                                                        </div>
-                                                                                </div>
-                                                                        </div>
-                                                                        <div class="row">
-                                                                                <div class="d-flex justify-content-end s-text text-secondary">
-                                                                                        {{singleMessage.date.split(" ",2)[1]}}
-                                                                                </div>
-                                                                        </div>
-                                                                </div>
-                                                        </div>
-                                                </div>
-                                                <footer class="row row-footer align-items-center  ">
-                                                        <div class="col-auto">
-                                                                <i class="fa-regular fa-face-smile fs-4 "></i>
-                                                        </div>
-                                                        <div class="col">
-                                                                <div class="input-group input-group-sm">
-                                                                        <input 
-                                                                                type="text" 
-                                                                                class="form-control" 
-                                                                                aria-label="Sizing example input" 
-                                                                                aria-describedby="inputGroup-sizing-sm"
-                                                                                placeholder="Scrivi un messaggio" 
-                                                                                @keyup.enter="sendMessage()" 
-                                                                                v-model="newMessage">
-                                                                </div>
-                                                        </div>
-                                                        <div class="col-auto">
-                                                                <i class="fa-solid fa-microphone fs-4"></i>
-                                                        </div>
-                                                </footer>
-                                        </main>
-                                </div>
-                        </div>
-                </div>
-        </div>
-        
-        <!-- LUXON -->
-        <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
+	<div class="body-header">
+		<div id="app">
+			<div class="container border rounded-2 shadow">
+				<div class="row h-100">
+					<aside class="col-4 p-0 h-100 border rounded-2">
+						<header class="row row-header align-items-center ">
+							<div class="col-auto">
+								<div class="border avatar-box">
+									<img src="img/avatar_io.jpg" alt="">
+								</div>
+							</div>
+							<div class="col">
+								<div>
+									<strong>Sofia</strong>
+								</div>
+							</div>
+							<div class="col-auto">
+								<i class="fa-solid fa-circle-notch"></i>
+							</div>
+							<div class="col-auto">
+								<i class="fa-solid fa-message"></i>
+							</div>
+							<div class="col-auto">
+								<i class="fa-solid fa-ellipsis-vertical"></i>
+							</div>
+						</header>
+						<section class="row row-bell py-2 align-items-center  ">
+							<div class="col-auto ">
+								<i id="bell" class="fa-solid fa-bell-slash bg-body p-2 rounded-5"></i>
+							</div>
+							<div class="col">
+								<div class="m-text">Ricevi notifiche di nuovi messaggi</div>
+								<a href="" class="s-text text-secondary ">Attiva notifiche desktop</a>
+							</div>
+						</section>
+						<section class="row row-search">
+							<nav class="navbar bg-body-tertiary">
+								<form class="container-fluid">
+									<div class="input-group">
+										<span class="input-group-text" id="basic-addon1">
+											<i class="fa-solid fa-magnifying-glass text-secondary "></i>
+										</span>
+										<input 
+										type="text" 
+										class="form-control s-text" 
+										placeholder="Cerca o inizia una nuova chat" 
+										aria-label="Username" 
+										aria-describedby="basic-addon1"
+										v-model="searchContact"
+										@keyup="searchChat()">
+									</div>
+								</form>
+							</nav>
+						</section>
+						<section class="contacts">
+							<div v-for="(contact, i) in contacts">
+								<div id="contact" 
+								class="row align-items-center py-3" 
+								:class="(i==activeContact) ? 'active' : ''"
+								@click="activeContact = i" 
+								v-if="contact.visible == true">
+								<div class="col-auto">
+									<div class="border avatar-box">
+										<img :src="contact.avatar" :alt="contact.name">
+									</div>
+								</div>
+								<div class="col">
+									<div class="">
+										<strong>{{contact.name}}</strong>
+									</div>
+									<div class="s-text text-secondary " v-if="contact.messages.length > 0">
+										{{contacts[i].messages[contacts[i].messages.length-1].message}}
+									</div>
+								</div>
+								<div class="col-auto">
+									<div class="s-text text-secondary " v-if="contact.messages.length > 0">
+										{{contacts[i].messages[contacts[i].messages.length-1].date.split(" ",2)[1]}}
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+				</aside>
+				<main class="col p-0 border rounded-2">
+					<header class="row row-header align-items-center ">
+						<div class="col-auto">
+							<div class="border avatar-box">
+								<img :src="contacts[activeContact].avatar" :alt="contacts[activeContact].name">
+							</div>
+						</div>
+						<div class="col">
+							<div>
+								<strong>{{contacts[activeContact].name}}</strong>
+							</div>
+							<div class="s-text text-secondary " v-if="contacts[activeContact].messages.length > 0">
+								Ultimo accesso: {{contacts[activeContact].messages[contacts[activeContact].messages.length-1].date}} <!-- Deve essere uguale alla data dell'ultimo messaggio ricevuto con classe received -->
+							</div>
+						</div>
+						<div class="col-auto">
+							<i class="fa-solid fa-magnifying-glass "></i>
+						</div>
+						<div class="col-auto">
+							<i class="fa-solid fa-paperclip"></i>
+						</div>
+						<div class="col-auto">
+							<i class="fa-solid fa-ellipsis-vertical"></i>
+						</div>
+					</header>
+					<div class="chat-box">
+						<div 
+						id="message"
+						class="row row-chat g-0 px-5 py-2 " 
+						v-for="(singleMessage,i) in contacts[activeContact].messages"
+						:class="singleMessage.status == 'sent' ? 'justify-content-end' : 'justify-content-start'"
+						:class="{
+							'justify-content-end':singleMessage.status == 'sent',
+							'justify-content-start': singleMessage.status == 'received'
+						}">
+						<div 
+						class="col-auto message l-text px-2"
+						:class="{
+							'sent':singleMessage.status == 'sent',
+							'received': singleMessage.status == 'received'
+						}">
+						<div class="row">
+							<div class="col">
+								{{singleMessage.message}}
+							</div>
+							<div class="col-auto">
+								<div class="message-dropdown">
+									<a class="" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+										<i class="fa-solid fa-angle-down"></i>
+									</a>
+									
+									<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+										<li>
+											<a class="dropdown-item" href="#" >Message info</a>
+										</li>
+										<li  @click="removeMessage(i)">
+											<a class="dropdown-item" href="#">Delete message</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="d-flex justify-content-end s-text text-secondary">
+								{{singleMessage.date.split(" ",2)[1]}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<footer class="row row-footer align-items-center  ">
+				<div class="col-auto">
+					<i class="fa-regular fa-face-smile fs-4 "></i>
+				</div>
+				<div class="col">
+					<div class="input-group input-group-sm">
+						<input 
+						type="text" 
+						class="form-control" 
+						aria-label="Sizing example input" 
+						aria-describedby="inputGroup-sizing-sm"
+						placeholder="Scrivi un messaggio" 
+						@keyup.enter="sendMessage()" 
+						v-model="newMessage">
+					</div>
+				</div>
+				<div class="col-auto">
+					<i class="fa-solid fa-microphone fs-4"></i>
+				</div>
+			</footer>
+		</main>
+	</div>
+</div>
+</div>
+</div>
 
-        <!-- BOOTSTRAP JS -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<!-- LUXON -->
+<script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
 
-        <!-- MY JS -->
-        <script type="text/javascript" src="./js/scripts.js"></script>
+<!-- BOOTSTRAP JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+<!-- MY JS -->
+<script type="text/javascript" src="./js/scripts.js"></script>
 </body>
 
 </html>
