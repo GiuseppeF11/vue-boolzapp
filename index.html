@@ -26,7 +26,10 @@
 		<div id="app">
 			<div class="container border rounded-2 shadow">
 				<div class="row h-100">
+
+					<!-- ASIDE -->
 					<aside class="col-4 p-0 h-100 border rounded-2">
+						<!-- ACCOUNT IN USO -->
 						<header class="row row-header align-items-center ">
 							<div class="col-auto">
 								<div class="border avatar-box">
@@ -48,6 +51,8 @@
 								<i class="fa-solid fa-ellipsis-vertical"></i>
 							</div>
 						</header>
+
+						<!-- ATTIVA NOTIFICHE -->
 						<section class="row row-bell py-2 align-items-center  ">
 							<div class="col-auto ">
 								<i id="bell" class="fa-solid fa-bell-slash bg-body p-2 rounded-5"></i>
@@ -57,6 +62,8 @@
 								<a href="" class="s-text text-secondary ">Attiva notifiche desktop</a>
 							</div>
 						</section>
+
+						<!-- RICERCA CONTATTI -->
 						<section class="row row-search">
 							<nav class="navbar bg-body-tertiary">
 								<form class="container-fluid">
@@ -76,7 +83,11 @@
 								</form>
 							</nav>
 						</section>
+
+						<!-- LISTA CONTATTI -->
 						<section class="contacts">
+
+							<!-- SINGOLO CONTATTO -->
 							<div v-for="(contact, i) in contacts">
 								<div id="contact" 
 								class="row align-items-center py-3" 
@@ -105,7 +116,11 @@
 						</div>
 					</section>
 				</aside>
+
+				<!-- CORPO CHAT ATTIVA -->
 				<main class="col p-0 border rounded-2">
+
+					<!-- INFO UTENTE CON CUI SI STA PARLANDO -->
 					<header class="row row-header align-items-center ">
 						<div class="col-auto">
 							<div class="border avatar-box">
@@ -130,7 +145,10 @@
 							<i class="fa-solid fa-ellipsis-vertical"></i>
 						</div>
 					</header>
+
+					<!-- CHAT -->
 					<div class="chat-box">
+						<!-- SINGOLO MESSAGGIO -->
 						<div 
 						id="message"
 						class="row row-chat g-0 px-5 py-2 " 
@@ -175,6 +193,8 @@
 					</div>
 				</div>
 			</div>
+
+		<!-- FOOTER PER INVIARE MESSAGGI IN CHAT -->
 			<footer class="row row-footer align-items-center  ">
 				<div class="col-auto">
 					<i class="fa-regular fa-face-smile fs-4 "></i>

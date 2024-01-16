@@ -5,11 +5,10 @@ const {createApp} = Vue;
 createApp ({
     data() {
         return {
-            hour: 'split(" ",2)[1]',
-            newMessage: '',
-            searchContact: '',
-            activeContact: 0,
-            activeMessage: 0,
+            newMessage: '',  //Definisco il nuovo messaggio come stringa vuota
+            searchContact: '',  //Definisco il contatto da cercare come stringa vuota
+            activeContact: 0,  //Definisco il contatore dei contatti
+            activeMessage: 0,  //Definisco il contatore dei messaggi
             contacts: [
                 {
                     name: 'Michele',
@@ -178,6 +177,8 @@ createApp ({
     },
 
     methods: {
+
+        //Funzione per inviare i messaggi
         sendMessage() {
             if (this.newMessage.trim().length > 0) { 
                 let obj = {
@@ -186,7 +187,7 @@ createApp ({
                     status : 'sent',
                 };
                 
-                this.contacts[this.activeContact].messages.push(obj); //pusho l'oggetto completo di text e done dentro la mia lista di cose da fare (todos)
+                this.contacts[this.activeContact].messages.push(obj); //pusho l'oggetto completo dentro la mia lista dei messaggi
                 this.newMessage = ''; // Per svuotare il v-model ovvero il value dell'input
 
                 let timeout;
@@ -202,12 +203,7 @@ createApp ({
             }
         },
 
-        /* removeMessage(i) {
-            console.log(i, this.contacts[i].messages);
-            this.contacts.splice(i, 1);
-            console.log('Hai rimosso il messaggio')
-        }, */
-
+        //Funzione per cercare le chat
         searchChat() {
             for (let i = 0; i < this.contacts.length; i++) {
                 const name = this.contacts[i].name.toLowerCase();
@@ -220,6 +216,7 @@ createApp ({
             }
         },
 
+        //Funzione per aggiungere l'ora attuale
         getCurrentDateTime() {
             const oggi = new Date();
             const giorno = oggi.getDate().toString().padStart(2, '0');
@@ -234,9 +231,10 @@ createApp ({
             return orarioFinale;
         },
 
+        //Funzione per rimuovere i messaggi dalla lista
         removeMessage(i) {
             console.log('Hai eliminato questo messaggio: ' , i);
-            this.contacts[this.activeContact].messages.splice(i , 1);
+            this.contacts[this.activeContact].messages.splice(i , 1); //.splice rimuove 1 elemento partendo da 'i'
         },
 
         //Creare una funzione che splitta l'ora
